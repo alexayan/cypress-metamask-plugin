@@ -106,6 +106,7 @@ module.exports = {
     await page.waitForTimeout(300);
   },
   waitAndClick: async (selector, page = metamaskWindow, numberOfClicks) => {
+    console.log('waitAndClick', selector)
     await module.exports.waitFor(selector, page);
     if (numberOfClicks) {
       let i = 0;

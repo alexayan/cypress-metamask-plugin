@@ -124,6 +124,7 @@ module.exports = (on, config) => {
       } else if (!network) {
         network = 'kovan';
       }
+      console.log('changeMetamaskNetwork', network)
       const networkChanged = await metamask.changeNetwork(network);
       return networkChanged;
     },

@@ -4,7 +4,7 @@ Interacting with you MetaMask made "easy". (Depending on how you define "easy" o
 
 This plugin is based on the solutions brought by [Jakub Mucha - drptbl](https://github.com/drptbl) in [Synpress](https://github.com/Synthetixio/synpress), but with a more stripped down and (this is opinionated) simpler approach. The goal is to build a fairly straight forward solution that you can integrate into your own testing (end-to-end) flow.
 
-Forked from - [cypress-metamask](https://github.com/CraftAcademyLabs/cypress-metamask)
+Forked from - [cypress-metamask-v2](https://github.com/saxenashivang/cypress-metamask-v2)
 
 ### Setup
 
@@ -13,9 +13,9 @@ Forked from - [cypress-metamask](https://github.com/CraftAcademyLabs/cypress-met
 Install the package using `yarn` or `npm`:
 
 ```bash
-$ yarn add -D cypress-metamask-v2
+$ yarn add -D cypress-metamask-plugin
 // or 
-$ npm i -D cypress-metamask-v2
+$ npm i -D cypress-metamask-plugin
 ```
 
 Import the plugin in `cypress/support/index.js` 
@@ -23,14 +23,14 @@ Import the plugin in `cypress/support/index.js`
 ```js
 // Import commands.js using ES2015 syntax:
 import './commands'
-import 'cypress-metamask-v2'
+import 'cypress-metamask-plugin'
 ```
 
 Modify your `cypress/plugins/index.js` to include the plugin:
 
 ```js
 module.exports = (on, config) => {
-  require('cypress-metamask-v2/cypress/plugins')(on)
+  require('cypress-metamask-plugin/cypress/plugins')(on)
 }
 ```
 

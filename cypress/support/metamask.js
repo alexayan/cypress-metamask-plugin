@@ -81,21 +81,16 @@ module.exports = {
     return true;
   },
   importWallet: async (secretWords, password) => {
-    const words = secretWords.split(' ');
     await puppeteer.waitAndClick(firstTimeFlowPageElements.importWalletButton);
     await puppeteer.waitAndClick(metametricsPageElements.optOutAnalyticsButton);
-
-    for (const [index, word] of words.entries()) {
-      const selector = firstTimeFlowFormPageElements.secretWordsInput.replace('%',index);
-      await puppeteer.waitAndType(
-        selector,
-        word,
-      );
-    }
 
     await puppeteer.waitAndType(
       firstTimeFlowFormPageElements.passwordInput,
       password,
+    );
+    await puppeteer.waitAndType(
+      firstTimeFlowFormPageElements.secretWordsInput,
+      secretWords,
     );
     await puppeteer.waitAndType(
       firstTimeFlowFormPageElements.confirmPasswordInput,
@@ -193,6 +188,7 @@ module.exports = {
     return true;
   },
   changeNetwork: async network => {
+    console.log('changeNetwork', network)
     await switchToMetamaskIfNotActive();
 
     if (typeof network === 'string') {
