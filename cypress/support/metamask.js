@@ -149,16 +149,23 @@ module.exports = {
     await switchToMetamaskIfNotActive();
 
     await puppeteer.waitAndClick(mainPageElements.accountMenu.button);
+    const page = await puppeteer.metamaskWindow();
+    const elements = await page.$$('.account-menu__name');
+    let exist = false;
+    for (let el of elements) {
+      const elText = await page.evaluate(el => el.textContent, el);
+      if (elText === accountName) {
+        exist = true;
+        break;
+      }
+    }
+    if (exist) {
+      return true;
+    }
     await puppeteer.waitAndClick(
       mainPageElements.accountMenu.createAccountButton,
     );
 
-    if (accountName) {
-      await puppeteer.waitAndType(
-        mainPageElements.createAccount.input,
-        accountName,
-      );
-    }
     await puppeteer.waitAndClick(mainPageElements.createAccount.createButton);
 
     await switchToCypressIfNotActive();
