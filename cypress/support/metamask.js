@@ -624,21 +624,19 @@ module.exports = {
         process.env.RPC_URL &&
         process.env.CHAIN_ID) ||
       typeof network == 'object';
-
     await puppeteer.init();
     await puppeteer.assignWindows();
     await puppeteer.assignActiveTabName('metamask');
     await puppeteer.metamaskWindow().waitForTimeout(1000);
+    await puppeteer.metamaskWindow().bringToFront();
     if (
       (await puppeteer.metamaskWindow().$(unlockPageElements.unlockPage)) ===
       null
     ) {
-
       if( (await puppeteer.metamaskWindow().$(mainPageElements.walletOverview)) !== null)  {
         await puppeteer.switchToCypressWindow();
         return true;
       }
-
       await module.exports.confirmWelcomePage();
       if (secretWordsOrPrivateKey.includes(' ')) {
         // secret words

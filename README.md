@@ -13,9 +13,9 @@ Forked from - [cypress-metamask-v2](https://github.com/saxenashivang/cypress-met
 Install the package using `yarn` or `npm`:
 
 ```bash
-$ yarn add -D cypress-metamask-plugin
+$ yarn add -D https://github.com/alexayan/cypress-metamask-plugin.git
 // or 
-$ npm i -D cypress-metamask-plugin
+$ npm i -D https://github.com/alexayan/cypress-metamask-plugin.git
 ```
 
 Import the plugin in `cypress/support/index.js` 
