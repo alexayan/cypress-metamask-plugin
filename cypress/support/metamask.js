@@ -409,6 +409,9 @@ module.exports = {
   },
   confirmTypedV4SignatureRequest: async () => {
     const notificationPage = await puppeteer.switchToMetamaskNotification()
+    await new Promise((resolve) => {
+      setTimeout(resolve, 2000);
+    })
     await puppeteer.waitAndClick(
         signaturePageElements.confirmTypedV4SignatureRequestButton,
         notificationPage,

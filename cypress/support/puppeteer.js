@@ -29,6 +29,9 @@ module.exports = {
       ignoreHTTPSErrors: true,
       defaultViewport: null,
     });
+
+    const page = await puppeteerBrowser.newPage();
+    await page.goto('chrome-extension://kmpclagmafolkebkgcjgpejohllpafgi/home.html');
     return puppeteerBrowser.isConnected();
   },
   clear: async () => {
