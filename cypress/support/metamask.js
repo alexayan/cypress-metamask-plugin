@@ -166,6 +166,13 @@ module.exports = {
       mainPageElements.accountMenu.createAccountButton,
     );
 
+
+    if (accountName) {
+      await puppeteer.waitAndType(
+        mainPageElements.createAccount.input,
+        accountName,
+      );
+    }
     await puppeteer.waitAndClick(mainPageElements.createAccount.createButton);
 
     await switchToCypressIfNotActive();
