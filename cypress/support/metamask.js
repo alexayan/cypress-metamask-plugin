@@ -368,6 +368,11 @@ module.exports = {
     const trashButtons = await puppeteer
       .metamaskWindow()
       .$$(mainPageElements.connectedSites.trashButton);
+    if (trashButtons.length === 0) {
+      await puppeteer.waitAndClick('.popover-header__button')
+      await switchToCypressIfNotActive();
+      return true;
+    }
     // eslint-disable-next-line no-unused-vars
     for (const trashButton of trashButtons) {
       await puppeteer.waitAndClick(mainPageElements.connectedSites.trashButton);
