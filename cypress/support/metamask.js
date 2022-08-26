@@ -160,6 +160,9 @@ module.exports = {
       }
     }
     if (exist) {
+      await page.$$('body').click();
+      await module.exports.switchAccount(accountName)
+      await switchToCypressIfNotActive();
       return true;
     }
     await puppeteer.waitAndClick(
@@ -174,7 +177,7 @@ module.exports = {
       );
     }
     await puppeteer.waitAndClick(mainPageElements.createAccount.createButton);
-
+    await module.exports.switchAccount(accountName)
     await switchToCypressIfNotActive();
     return true;
   },
