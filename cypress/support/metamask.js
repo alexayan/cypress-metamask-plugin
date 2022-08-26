@@ -160,7 +160,6 @@ module.exports = {
       }
     }
     if (exist) {
-      await page.$$('body').click();
       await module.exports.switchAccount(accountName)
       await switchToCypressIfNotActive();
       return true;
