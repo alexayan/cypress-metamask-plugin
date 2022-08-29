@@ -160,7 +160,16 @@ module.exports = {
       }
     }
     if (exist) {
-      await module.exports.switchAccount(accountName)
+      if (typeof accountName === 'number') {
+        await puppeteer.waitAndClick(
+          mainPageElements.accountMenu.accountButton(accountName),
+        );
+      } else {
+        await puppeteer.waitAndClickByText(
+          mainPageElements.accountMenu.accountName,
+          accountName,
+        );
+      }
       await switchToCypressIfNotActive();
       return true;
     }
